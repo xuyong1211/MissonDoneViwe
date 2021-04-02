@@ -11,6 +11,8 @@ class TreeNode {
     var name1 = ""
     var name2 = ""
     var deep =  0
+    var x = 0
+    var y = 0
     var view : View? = null
     var children : List<TreeNode>? = null
 

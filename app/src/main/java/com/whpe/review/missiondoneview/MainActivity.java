@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.whpe.review.missiondoneview.treegroup.TreeAdapterImp;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        ListView
         setContentView(R.layout.activity_main);
         TreeView treeView = (TreeView) findViewById(R.id.treeView);
         TreeAdapterImp adapterImp = new TreeAdapterImp();
@@ -104,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
         treeNode24.setChildren(list10);
         Gson gson = new Gson();
         String s = gson.toJson(treeNode24);
-        Log.d("addView",s);
         adapterImp.setTreeNode(treeNode24);
         treeView.setAdapter(adapterImp);
     }
