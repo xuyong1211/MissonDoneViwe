@@ -16,4 +16,5 @@ class DoneView : View {
         radius = (w.coerceAtMost(h) - paddingLeft - paddingRight)/2
         center = Point(w/2, h/2)
     }
+
 }

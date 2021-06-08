@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.children
 import com.whpe.review.missiondoneview.R
 import kotlin.math.max
@@ -35,7 +36,6 @@ class TreeView : ViewGroup {
         }
         var childView = adapter?.getView(treeNode, this)
         treeNode.view = childView
-//        Log.d("addView", "${childView.toString()}${childView?.findViewById<TextView>(R.id.tv_name)}")
         treeNode.deep = deep
     }
 
@@ -48,10 +48,11 @@ class TreeView : ViewGroup {
         childHeight = measuredHeight / maxDeep
         currentX = 0
         measureAllView(adapter?.treeNode!!)
-
+        addAllViews(adapter?.treeNode!!)
         for (child in children) {
-            child.measure(MeasureSpec.makeMeasureSpec(20,MeasureSpec.EXACTLY),MeasureSpec.makeMeasureSpec(20,MeasureSpec.EXACTLY))
+            child.measure(MeasureSpec.makeMeasureSpec(childWidth,MeasureSpec.EXACTLY),MeasureSpec.makeMeasureSpec(childHeight-80,MeasureSpec.EXACTLY))
         }
+        setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec),MeasureSpec.getSize(heightMeasureSpec))
     }
 
 
@@ -61,15 +62,7 @@ class TreeView : ViewGroup {
     var childHeight = 0
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
-        Log.d("addView","onLayout")
-        addAllViews(adapter?.treeNode!!)
         layoutAllView(adapter?.treeNode!!)
-//        if (adapter != null) {
-//            children.forEach {
-//                it.layout(it.x.toInt(),it.y.toInt(),(it.x + childWidth).toInt(),(it.y+childHeight).toInt())
-////                Log.d("addView", "${it.x.toInt()}--${it.y.toInt()}--${(it.x + childWidth).toInt()}--${(it.y+childHeight).toInt()}")
-//            }
-//        }
 
 
     }
